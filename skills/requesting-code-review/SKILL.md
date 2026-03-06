@@ -21,6 +21,15 @@ Dispatch superpowers:code-reviewer subagent to catch issues before they cascade.
 - Before refactoring (baseline check)
 - After fixing complex bug
 
+## Reviewer Selection
+
+Dispatch the appropriate reviewer based on project context. Check project memory (CLAUDE.md) first — it may specify which reviewer to use.
+
+- **Swift/Xcode projects:** Use `superpowers:swift-code-reviewer` — adds Swift concurrency, SwiftUI, and protocol-oriented design review
+- **All other projects:** Use `superpowers:code-reviewer` (default)
+
+Both reviewers use the same template and output format.
+
 ## How to Request
 
 **1. Get git SHAs:**

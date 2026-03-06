@@ -37,6 +37,12 @@ BEFORE claiming any status or expressing satisfaction:
 Skip any step = lying, not verifying
 ```
 
+## Delegated Verification
+
+Verification can be performed by dispatching a specialized agent. The agent's structured report IS the evidence. For example, dispatch the `xcode-build-reporter` agent for Xcode build verification — the Build Report it returns (Status: SUCCESS/FAILURE with errors and warnings) is the evidence you read and verify.
+
+The Gate Function still applies: IDENTIFY the agent to dispatch → RUN (dispatch it) → READ the agent's full report → VERIFY the report confirms your claim → ONLY THEN make the claim. "I dispatched the agent" is not evidence — the agent's report is.
+
 ## Common Failures
 
 | Claim | Requires | Not Sufficient |
@@ -47,6 +53,7 @@ Skip any step = lying, not verifying
 | Bug fixed | Test original symptom: passes | Code changed, assumed fixed |
 | Regression test works | Red-green cycle verified | Test passes once |
 | Agent completed | VCS diff shows changes | Agent reports "success" |
+| Build succeeds (delegated) | Build agent report: Status SUCCESS | Agent dispatched, assumed success |
 | Requirements met | Line-by-line checklist | Tests passing |
 
 ## Red Flags - STOP

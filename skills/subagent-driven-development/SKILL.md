@@ -29,6 +29,19 @@ digraph when_to_use {
 }
 ```
 
+## Agent Selection
+
+Before dispatching subagents, select the appropriate agent types based on project context. Check project memory (CLAUDE.md) first — it may specify which agents to use.
+
+| Role | Default | Swift/Xcode Projects |
+|------|---------|---------------------|
+| Implementer | `general-purpose` | `swift-engineer` |
+| Code quality reviewer | `superpowers:code-reviewer` | `superpowers:swift-code-reviewer` |
+| Spec compliance reviewer | `general-purpose` | `general-purpose` (language-agnostic) |
+| Build verification | CLI commands | `xcode-build-reporter` agent |
+
+Apply this selection when dispatching each subagent in the process below.
+
 **vs. Executing Plans (parallel session):**
 - Same session (no context switch)
 - Fresh subagent per task (no context pollution)
