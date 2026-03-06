@@ -7,7 +7,11 @@ Use this template when dispatching a code quality reviewer subagent.
 **Only dispatch after spec compliance review passes.**
 
 ```
-Task tool (superpowers:code-reviewer):
+Task tool (<reviewer-type>):
+  # Select reviewer based on project context:
+  # - superpowers:code-reviewer (default)
+  # - superpowers:swift-code-reviewer (Swift/Xcode projects)
+  # See Agent Selection in SKILL.md
   Use template at requesting-code-review/code-reviewer.md
 
   WHAT_WAS_IMPLEMENTED: [from implementer's report]

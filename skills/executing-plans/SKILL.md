@@ -13,6 +13,16 @@ Load plan, review critically, execute tasks in batches, report for review betwee
 
 **Announce at start:** "I'm using the executing-plans skill to implement this plan."
 
+## Agent Selection
+
+Before executing tasks, select the appropriate agent types based on project context. Check project memory (CLAUDE.md) first — it may specify which agents to use.
+
+| Role | Default | Swift/Xcode Projects |
+|------|---------|---------------------|
+| Implementer | `general-purpose` | `swift-engineer` |
+| Code quality reviewer | `superpowers:code-reviewer` | `superpowers:swift-code-reviewer` |
+| Build verification | CLI commands | `xcode-build-reporter` agent |
+
 ## The Process
 
 ### Step 1: Load and Review Plan
@@ -26,8 +36,8 @@ Load plan, review critically, execute tasks in batches, report for review betwee
 
 For each task:
 1. Mark as in_progress
-2. Follow each step exactly (plan has bite-sized steps)
-3. Run verifications as specified
+2. Implement the task according to its requirements and acceptance criteria — use your expertise and project knowledge to decide the approach
+3. Run verifications as specified (delegate to build agents when appropriate)
 4. Mark as completed
 
 ### Step 3: Report
