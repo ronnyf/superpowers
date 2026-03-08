@@ -21,7 +21,7 @@ Before executing tasks, select the appropriate agent types based on project cont
 |------|---------|---------------------|
 | Implementer | `general-purpose` | `swift-engineer` |
 | Code quality reviewer | `superpowers:code-reviewer` | `superpowers:swift-code-reviewer` |
-| Build verification | CLI commands | `xcode-build-reporter` agent |
+| Build verification | CLI commands | `superpowers:xcode-build-reporting` skill |
 
 ## The Process
 

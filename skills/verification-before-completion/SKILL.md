@@ -39,7 +39,7 @@ Skip any step = lying, not verifying
 
 ## Delegated Verification
 
-Verification can be performed by dispatching a specialized agent. The agent's structured report IS the evidence. For example, dispatch the `xcode-build-reporter` agent for Xcode build verification — the Build Report it returns (Status: SUCCESS/FAILURE with errors and warnings) is the evidence you read and verify.
+Verification can be performed by using a specialized skill. The structured report IS the evidence. For example, use the `superpowers:xcode-build-reporting` skill for Xcode build verification — the Build Report it produces (Status: SUCCESS/FAILURE with errors and warnings) is the evidence you read and verify.
 
 The Gate Function still applies: IDENTIFY the agent to dispatch → RUN (dispatch it) → READ the agent's full report → VERIFY the report confirms your claim → ONLY THEN make the claim. "I dispatched the agent" is not evidence — the agent's report is.
 

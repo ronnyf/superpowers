@@ -38,7 +38,7 @@ Before dispatching subagents, select the appropriate agent types based on projec
 | Implementer | `general-purpose` | `swift-engineer` |
 | Code quality reviewer | `superpowers:code-reviewer` | `superpowers:swift-code-reviewer` |
 | Spec compliance reviewer | `general-purpose` | `general-purpose` (language-agnostic) |
-| Build verification | CLI commands | `xcode-build-reporter` agent |
+| Build verification | CLI commands | `superpowers:xcode-build-reporting` skill |
 
 Apply this selection when dispatching each subagent in the process below.
 
