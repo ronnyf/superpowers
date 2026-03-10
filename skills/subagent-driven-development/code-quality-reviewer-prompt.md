@@ -8,6 +8,8 @@ Use this template when dispatching a code quality reviewer subagent.
 
 ```
 Task tool (superpowers:code-reviewer):
+  # For Swift/Xcode projects, use superpowers:swift-code-reviewer instead
+  # See Agent Selection in SKILL.md
   Use template at requesting-code-review/code-reviewer.md
 
   WHAT_WAS_IMPLEMENTED: [from implementer's report]

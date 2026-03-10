@@ -84,6 +84,19 @@ digraph process {
 }
 ```
 
+## Agent Selection
+
+Before dispatching subagents, select the appropriate agent types based on project context. Check project instructions (CLAUDE.md) first — they may specify which agents to use.
+
+| Role | Default | Swift/Xcode Projects |
+|------|---------|---------------------|
+| Implementer | `general-purpose` | `superpowers:swift-engineer` |
+| Code quality reviewer | `superpowers:code-reviewer` | `superpowers:swift-code-reviewer` |
+| Spec compliance reviewer | `general-purpose` | `general-purpose` (language-agnostic) |
+| Build verification | CLI commands | `superpowers:xcode-build-reporter` agent |
+
+Apply this selection when dispatching each subagent in the process below.
+
 ## Model Selection
 
 Use the least powerful model that can handle each role to conserve cost and increase speed.

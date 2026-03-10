@@ -2,8 +2,12 @@
 
 Use this template when dispatching an implementer subagent.
 
+Select agent type based on project context (see Agent Selection in SKILL.md):
+- Default: `general-purpose`
+- Swift/Xcode projects: `superpowers:swift-engineer`
+
 ```
-Task tool (general-purpose):
+Task tool (<agent-type>):
   description: "Implement Task N: [task name]"
   prompt: |
     You are implementing Task N: [task name]
