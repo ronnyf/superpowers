@@ -1,0 +1,88 @@
+---
+name: swift-engineering
+description: Use when writing, reviewing, or architecting Swift code for Apple platforms (iOS, macOS, visionOS, watchOS, tvOS) - covers Swift 6 concurrency, type system, SwiftUI, protocol design, and best practices
+---
+
+# Swift Engineering
+
+Swift 6 best practices for Apple platform development. Follow these when writing code; verify these when reviewing code.
+
+## Swift 6 Strict Concurrency
+
+Every decision must account for data isolation. This is non-negotiable:
+
+- **Actors** for shared mutable state. Prefer over classes with locks or queues.
+- **Structured concurrency**: `TaskGroup`, `async let`. Avoid unstructured `Task {}` unless escaping a synchronous context.
+- **@TaskLocal** for dependency injection into task hierarchies.
+- **Sendable**: All types crossing isolation boundaries must conform. Prefer value types (structs, enums).
+- **NEVER use `nonisolated(unsafe)`** — find alternative designs (actors, protocols with Sendable constraints, restructure ownership).
+- **@MainActor**: Only for UI-bound code. Not a convenience escape hatch.
+- **@concurrent nonisolated**: For methods that can safely run on any executor without isolation.
+- **Typed throws** (`throws(MyError)`): Use for precise, exhaustive error handling at API boundaries.
+- **consuming / borrowing**: Apply parameter ownership modifiers on performance-critical paths.
+- **~Copyable**: Use non-copyable types when ownership semantics enforce correctness.
+- **Mutex / OSAllocatedUnfairLock**: For synchronous critical sections when actors are too heavyweight.
+- **AsyncSequence / AsyncStream**: For streaming data. Prefer over callback/delegate patterns.
+- **Continuations**: Bridge callback-based APIs to async/await. Always resume exactly once.
+
+## Type System — Leverage Fully
+
+Use the type system to catch errors at compile time, not runtime:
+
+- **Parameter packs** (`each T`) for variadic generic APIs — prefer over overload sets.
+- **Opaque types** (`some Protocol`) when the concrete return type is fixed at the call site.
+- **Existentials** (`any Protocol`) only when runtime polymorphism is truly needed. Minimize existential overhead.
+- **Conditional conformance** for specialized behavior without type erasure.
+- **@resultBuilder** for declarative DSLs and configuration APIs.
+- **Attached macros** for eliminating repetitive boilerplate.
+- **Phantom types** for compile-time state machines and type-level invariants.
+- **Key paths** for functional composition and generic property access.
+
+## SwiftUI
+
+- Appropriate state ownership: `@State` for view-local, `@Binding` for parent-owned, `@Observable`/`@Environment` for shared.
+- View body is simple — complex logic extracted to methods or computed properties.
+- No unnecessary recomputation (stable identifiers, proper use of `Equatable`).
+- Task modifiers (`.task`, `.task(id:)`) for async work tied to view lifecycle.
+- No blocking work on MainActor in view code.
+
+## Protocol-Oriented Design
+
+- Composition over inheritance. Protocols over base classes.
+- Protocol extensions provide sensible defaults without surprising behavior.
+- Associated types and conditional conformance used over type erasure.
+- Protocols are minimal — don't bundle unrelated requirements.
+
+## Architecture
+
+- Value types by default. Reference types only for identity semantics or shared mutable state.
+- `package` access for framework-internal APIs. `public` only for the true external surface.
+- Closure-based configuration (static let closures) over subclassing or delegation.
+- Single source of truth for state. Derive everything else.
+
+## Memory Management
+
+- No retain cycles in closures — especially in async contexts and Combine pipelines.
+- Appropriate use of `weak`/`unowned` for delegate and callback patterns.
+- Large value types considered for performance (copy-on-write or class backing).
+
+## API Design
+
+- Follows Swift API Design Guidelines (clarity at point of use, fluent naming).
+- Access control is intentional: `private` for implementation details, `package` for framework-internal, `public` only for true external API.
+- Error types are specific and informative, not generic `Error` everywhere.
+- Parameters use appropriate labels (omit when role is clear from context).
+
+## Code Quality
+
+- **Minimize code**: Maximum capability with least code. Three similar lines > premature abstraction.
+- **Self-documenting**: Clear naming over comments. `///` doc comments for package/public APIs only.
+- **os.log**: Structured logging with subsystem and category.
+- **Error handling**: Throw on invariant violations. Never silently return empty results for errors.
+
+## Testing
+
+- **Swift Testing** framework (`@Test`, `#expect`, `#require`) — NOT XCTest (except performance tests).
+- Async tests use proper patterns (no `XCTestExpectation` workarounds).
+- Tests verify behavior, not implementation details.
+- Edge cases and error paths covered.
