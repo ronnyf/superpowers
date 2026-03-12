@@ -33,6 +33,7 @@ Task tool (general-purpose):
     - Compare actual implementation to requirements line by line
     - Check for missing pieces they claimed to implement
     - Look for extra features they didn't mention
+    - Use LSP tools (goToDefinition, findReferences, goToImplementation) to trace code paths and verify implementations
 
     ## Your Job
 
