@@ -33,6 +33,8 @@ The agent handles MCP tool discovery, build execution, error/warning extraction,
 
 ## Xcode MCP Tools — Primary Interface
 
+**Tool loading:** Xcode MCP tools are deferred — load them first with `ToolSearch` (query: `+xcode build`). This makes `BuildProject`, `GetBuildLog`, `XcodeListWindows`, `RunAllTests`, `RunSomeTests`, `GetTestList`, and `XcodeListNavigatorIssues` available.
+
 ### Quick Reference
 
 | Tool | Purpose | Key Parameters |

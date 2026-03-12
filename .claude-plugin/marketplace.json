@@ -9,8 +9,12 @@
     {
       "name": "superpowers",
       "description": "Core skills library for Claude Code: TDD, debugging, collaboration patterns, and proven techniques",
-      "version": "5.0.2",
-      "source": "./",
+      "version": "5.0.2.2",
+      "source": {
+        "source": "url",
+        "url": "git@github.pie.apple.com:rfalk/claude-superpowers.git",
+        "ref": "v5.0.2.2"
+      },
       "author": {
         "name": "Jesse Vincent",
         "email": "jesse@fsck.com"

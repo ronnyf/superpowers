@@ -42,6 +42,12 @@ Task tool (<agent-type>):
 
     Work from: [directory]
 
+    **Code navigation:** Use LSP tools for navigating the codebase instead of grepping through
+    files manually. LSP is a deferred tool — load it first with `ToolSearch` (query: `select:LSP`),
+    then use `goToDefinition`, `findReferences`, `goToImplementation`, `hover`, `incomingCalls`,
+    and `outgoingCalls` to trace types, verify conformances, find all protocol conformers, and
+    understand call hierarchies.
+
     **While you work:** If you encounter something unexpected or unclear, **ask questions**.
     It's always OK to pause and clarify. Don't guess or make assumptions.
 
