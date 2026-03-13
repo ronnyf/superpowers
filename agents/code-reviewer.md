@@ -1,7 +1,6 @@
 ---
 name: code-reviewer
 description: "Review completed project steps against original plans and coding standards. Dispatch after a major implementation step is finished."
-tools: all
 model: inherit
 ---
 
