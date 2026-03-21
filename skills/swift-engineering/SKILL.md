@@ -1,6 +1,6 @@
 ---
 name: swift-engineering
-description: Use when writing, reviewing, or architecting Swift code for Apple platforms (iOS, macOS, visionOS, watchOS, tvOS) - covers Swift 6 concurrency, type system, SwiftUI, protocol design, and best practices
+description: Use when writing, reviewing, or architecting Swift code for Apple platforms
 ---
 
 # Swift Engineering
@@ -55,28 +55,12 @@ Use the type system to catch errors at compile time, not runtime:
 
 ## Architecture
 
-- Value types by default. Reference types only for identity semantics or shared mutable state.
 - `package` access for framework-internal APIs. `public` only for the true external surface.
 - Closure-based configuration (static let closures) over subclassing or delegation.
 - Single source of truth for state. Derive everything else.
 
-## Memory Management
-
-- No retain cycles in closures — especially in async contexts and Combine pipelines.
-- Appropriate use of `weak`/`unowned` for delegate and callback patterns.
-- Large value types considered for performance (copy-on-write or class backing).
-
-## API Design
-
-- Follows Swift API Design Guidelines (clarity at point of use, fluent naming).
-- Access control is intentional: `private` for implementation details, `package` for framework-internal, `public` only for true external API.
-- Error types are specific and informative, not generic `Error` everywhere.
-- Parameters use appropriate labels (omit when role is clear from context).
-
 ## Code Quality
 
-- **Minimize code**: Maximum capability with least code. Three similar lines > premature abstraction.
-- **Self-documenting**: Clear naming over comments. `///` doc comments for package/public APIs only.
 - **os.log**: Structured logging with subsystem and category.
 - **Error handling**: Throw on invariant violations. Never silently return empty results for errors.
 

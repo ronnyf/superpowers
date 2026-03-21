@@ -1,7 +1,7 @@
 {
   "name": "superpowers",
   "description": "Core skills library for Claude Code: TDD, debugging, collaboration patterns, and proven techniques",
-  "version": "5.0.2.4",
+  "version": "5.0.5.1",
   "author": {
     "name": "Ronny Falk",
     "email": "ronnyf@apple.com"
@@ -9,5 +9,12 @@
   "homepage": "https://github.pie.apple.com/rfalk/claude-superpowers",
   "repository": "git@github.pie.apple.com:rfalk/claude-superpowers.git",
   "license": "MIT",
-  "keywords": ["skills", "tdd", "debugging", "collaboration", "best-practices", "workflows"]
+  "keywords": [
+    "skills",
+    "tdd",
+    "debugging",
+    "collaboration",
+    "best-practices",
+    "workflows"
+  ]
 }

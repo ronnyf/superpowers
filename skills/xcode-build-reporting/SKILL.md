@@ -1,6 +1,7 @@
 ---
 name: xcode-build-reporting
-description: Use when building an Xcode project, running tests, checking for build errors or warnings, or verifying compilation after code changes - covers Xcode MCP tools and xcodebuild CLI fallback
+description: Use when building Xcode projects, running tests, checking for build errors or warnings, or verifying compilation after code changes
+allowed-tools: Read, Grep, Glob, Bash(xcodebuild*)
 ---
 
 # Xcode Build Reporting
@@ -21,15 +22,7 @@ Build Xcode projects and produce structured reports using **Xcode MCP tools** (p
 
 ## Dispatching the Build Agent
 
-When you need a build report, dispatch the `superpowers:xcode-build-reporter` agent via the Task tool. This is a lightweight (haiku model) subagent dedicated to building and reporting — it will return a structured report and nothing else.
-
-```
-Task tool (superpowers:xcode-build-reporter):
-  description: "Build and report"
-  prompt: "Build the project and report results."
-```
-
-The agent handles MCP tool discovery, build execution, error/warning extraction, and CLI fallback automatically. It follows the same MCP-first approach and output format documented below.
+When you need a build report, dispatch the `superpowers:xcode-build-reporter` agent via the Task tool. It handles MCP tool discovery, build execution, error/warning extraction, and CLI fallback automatically.
 
 ## Xcode MCP Tools — Primary Interface
 

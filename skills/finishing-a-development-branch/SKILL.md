@@ -1,6 +1,6 @@
 ---
 name: finishing-a-development-branch
-description: Use when implementation is complete, all tests pass, and you need to decide how to integrate the work - guides completion of development work by presenting structured options for merge, PR, or cleanup
+description: Use when implementation is complete and you need to integrate the work - merge, PR, or cleanup
 ---
 
 # Finishing a Development Branch
@@ -10,8 +10,6 @@ description: Use when implementation is complete, all tests pass, and you need t
 Guide completion of development work by presenting clear options and handling chosen workflow.
 
 **Core principle:** Verify tests → Present options → Execute choice → Clean up.
-
-**Announce at start:** "I'm using the finishing-a-development-branch skill to complete this work."
 
 ## The Process
 
@@ -40,11 +38,8 @@ Stop. Don't proceed to Step 2.
 ### Step 2: Determine Base Branch
 
 ```bash
-# Try common base branches
 git merge-base HEAD main 2>/dev/null || git merge-base HEAD master 2>/dev/null
 ```
-
-Or ask: "This branch split from main - is that correct?"
 
 ### Step 3: Present Options
 
@@ -68,19 +63,10 @@ Which option?
 #### Option 1: Merge Locally
 
 ```bash
-# Switch to base branch
 git checkout <base-branch>
-
-# Pull latest
 git pull
-
-# Merge feature branch
 git merge <feature-branch>
-
-# Verify tests on merged result
 <test command>
-
-# If tests pass
 git branch -d <feature-branch>
 ```
 
@@ -89,18 +75,8 @@ Then: Cleanup worktree (Step 5)
 #### Option 2: Push and Create PR
 
 ```bash
-# Push branch
 git push -u origin <feature-branch>
-
-# Create PR
-gh pr create --title "<title>" --body "$(cat <<'EOF'
-## Summary
-<2-3 bullets of what changed>
-
-## Test Plan
-- [ ] <verification steps>
-EOF
-)"
+gh pr create --title "<title>" --body "<summary>"
 ```
 
 Then: Cleanup worktree (Step 5)
@@ -157,24 +133,6 @@ git worktree remove <worktree-path>
 | 2. Create PR | - | ✓ | ✓ | - |
 | 3. Keep as-is | - | - | ✓ | - |
 | 4. Discard | - | - | - | ✓ (force) |
-
-## Common Mistakes
-
-**Skipping test verification**
-- **Problem:** Merge broken code, create failing PR
-- **Fix:** Always verify tests before offering options
-
-**Open-ended questions**
-- **Problem:** "What should I do next?" → ambiguous
-- **Fix:** Present exactly 4 structured options
-
-**Automatic worktree cleanup**
-- **Problem:** Remove worktree when might need it (Option 2, 3)
-- **Fix:** Only cleanup for Options 1 and 4
-
-**No confirmation for discard**
-- **Problem:** Accidentally delete work
-- **Fix:** Require typed "discard" confirmation
 
 ## Red Flags
 
