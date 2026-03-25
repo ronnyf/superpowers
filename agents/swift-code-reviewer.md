@@ -1,7 +1,8 @@
 ---
 name: swift-code-reviewer
 description: "Review completed Swift code for concurrency correctness, SwiftUI patterns, protocol design, API surface, and architecture against Swift 6 best practices."
-model: inherit
+model: opus
+effort: max
 skills:
   - superpowers:swift-engineering
   - superpowers:swift-concurrency-pro

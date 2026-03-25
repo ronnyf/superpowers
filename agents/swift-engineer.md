@@ -1,7 +1,8 @@
 ---
 name: swift-engineer
 description: "Implement or modernize Swift code on Apple platforms. Dispatch for tasks requiring production Swift with actor isolation, structured concurrency, SwiftUI, or type system expertise."
-model: inherit
+model: opus 
+effort: max
 color: red
 skills:
   - superpowers:swift-engineering
