@@ -1,0 +1,3 @@
+[submodule "third-party/swift-concurrency-pro"]
+	path = third-party/swift-concurrency-pro
+	url = git@github.pie.apple.com:rfalk/Swift-Concurrency-Agent-Skills.git
