@@ -10,10 +10,11 @@ This is **not a traditional codebase** — there is no compiled code, no build s
 
 ## Repository Structure
 
-- `skills/` — Each subdirectory is a skill. The entry point is always `SKILL.md` with YAML frontmatter (`name`, `description`). Skills may include supporting `.md` files referenced from the main skill.
+- `skills/` — Each subdirectory is a skill. The entry point is always `SKILL.md` with YAML frontmatter (`name`, `description`). Skills may include supporting `.md` files referenced from the main skill. May contain symlinks to third-party skills.
 - `agents/` — Agent persona definitions (`.md` files) used as subagent prompts by skills like `subagent-driven-development` and `requesting-code-review`.
 - `commands/` — Slash command definitions (`.md` files) that map to user-invocable actions like `/brainstorm`, `/write-plan`, `/execute-plan`.
 - `hooks/` — Session lifecycle hooks. `hooks.json` defines the hook configuration; `session-start` script runs on session init. `run-hook.cmd` is a polyglot wrapper (bash+cmd) for cross-platform support.
+- `third-party/` — Git submodules for externally maintained skills. Symlinked into `skills/` for `superpowers:` namespace discovery.
 - `docs/` — Design specs (`docs/superpowers/specs/`), implementation plans (`docs/superpowers/plans/`), and platform-specific setup docs.
 - `tests/` — Integration tests that run real Claude Code sessions in headless mode and verify behavior via session transcript (`.jsonl`) parsing.
 
@@ -27,7 +28,29 @@ The repo targets multiple platforms, each with its own manifest:
 - `.opencode/` — OpenCode plugin support
 - `gemini-extension.json` + `GEMINI.md` — Gemini CLI extension
 
-**When bumping versions**, update: `.claude-plugin/plugin.json`, `.claude-plugin/marketplace.json`, `.cursor-plugin/plugin.json`, and `gemini-extension.json`.
+**When bumping versions**, update: `.claude-plugin/plugin.json`, `.claude-plugin/marketplace.json` (both `version` and `ref`), `.cursor-plugin/plugin.json`, and `gemini-extension.json`. The plugin manager checks `plugin.json` for the installed version — if only `marketplace.json` is bumped, updates won't be detected.
+
+## Branching and Release Workflow
+
+- **v5** — working branch, all development happens here
+- **main** — release mirror, receives squash merges from v5
+- **Tags** go on **v5** (not main). Format: `v5.0.5.X`, always incrementing the 4th number
+- **Remotes:** `internal` = github.pie.apple.com (rfalk/claude-superpowers), `origin` = github.com (obra/superpowers)
+
+Release steps:
+1. Commit on v5
+2. `git push internal v5`
+3. `git checkout main && git merge --squash v5 && git commit` → push main
+4. `git tag v5.0.5.X` on v5 (not main) → `git push internal v5.0.5.X`
+
+## Adding Third-Party Skills
+
+Third-party skills live as git submodules in `third-party/` and are symlinked into `skills/` for discovery:
+
+1. `git submodule add <url> third-party/<name>`
+2. `ln -s ../third-party/<name>/<skill-dir> skills/<name>`
+3. Add marketplace entry in `.claude-plugin/marketplace.json`
+4. Add `superpowers:<name>` to the `skills` array in relevant agents
 
 ## Skill Anatomy
 
