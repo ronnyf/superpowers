@@ -2,7 +2,7 @@
   "upstream_remote": "origin",
   "upstream_branch": "main",
   "fork_remote": "internal",
-  "fork_branch": "v5",
+  "fork_branch": "main",
   "plugin_overrides": {
     "author": {
       "name": "Ronny Falk",

@@ -32,16 +32,14 @@ The repo targets multiple platforms, each with its own manifest:
 
 ## Branching and Release Workflow
 
-- **v5** — working branch, all development happens here
-- **main** — release mirror, receives squash merges from v5
-- **Tags** go on **v5** (not main). Format: `v5.0.5.X`, always incrementing the 4th number
+- **main** — single working branch, tracks upstream and holds our fork additions
+- **Tags** format: `v5.0.X.Y` on main
 - **Remotes:** `internal` = github.pie.apple.com (rfalk/claude-superpowers), `origin` = github.com (obra/superpowers)
 
 Release steps:
-1. Commit on v5
-2. `git push internal v5`
-3. `git checkout main && git merge --squash v5 && git commit` → push main
-4. `git tag v5.0.5.X` on v5 (not main) → `git push internal v5.0.5.X`
+1. Commit on main
+2. `git push internal main`
+3. `git tag v5.0.X.Y` → `git push internal v5.0.X.Y`
 
 ## Syncing with Upstream
 
