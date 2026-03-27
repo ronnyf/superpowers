@@ -28,7 +28,7 @@ The repo targets multiple platforms, each with its own manifest:
 - `.opencode/` — OpenCode plugin support
 - `gemini-extension.json` + `GEMINI.md` — Gemini CLI extension
 
-**When bumping versions**, update: `.claude-plugin/plugin.json`, `.claude-plugin/marketplace.json` (both `version` and `ref`), `.cursor-plugin/plugin.json`, and `gemini-extension.json`. The plugin manager checks `plugin.json` for the installed version — if only `marketplace.json` is bumped, updates won't be detected.
+**When bumping versions**, use `scripts/apply-fork-overrides.sh --version X.Y.Z` which updates all manifests at once. Manual editing is no longer needed.
 
 ## Branching and Release Workflow
 
@@ -42,6 +42,27 @@ Release steps:
 2. `git push internal v5`
 3. `git checkout main && git merge --squash v5 && git commit` → push main
 4. `git tag v5.0.5.X` on v5 (not main) → `git push internal v5.0.5.X`
+
+## Syncing with Upstream
+
+This is a fork of `origin` (github.com/obra/superpowers). Our fork adds Swift/Xcode agents, skills, and submodules. Manifest overrides (author, source URLs, extra plugins) are managed by scripts so they don't cause merge conflicts.
+
+**Sync workflow:**
+```bash
+# Preview what's new upstream (no changes made)
+scripts/sync-upstream.sh --dry-run
+
+# Merge upstream and re-apply fork overrides
+scripts/sync-upstream.sh
+```
+
+The sync script: fetches upstream, merges into v5, then runs `apply-fork-overrides.sh` to patch manifests with our fork-specific values from `scripts/fork-config.json`.
+
+**If conflicts occur:** The script stops and tells you which files conflict. Resolve them, commit, then run `scripts/apply-fork-overrides.sh --version <upstream-version>` to re-apply manifest overrides.
+
+**After adding a new fork-specific plugin:** Add its entry to `scripts/fork-config.json` under `marketplace_overrides.extra_plugins`.
+
+**When bumping versions:** Use `scripts/apply-fork-overrides.sh --version X.Y.Z` instead of manually editing each manifest.
 
 ## Adding Third-Party Skills
 
