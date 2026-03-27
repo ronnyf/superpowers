@@ -23,11 +23,11 @@
     {
       "name": "swift-concurrency-pro",
       "description": "Reviews Swift code for concurrency correctness, modern API usage, and common async/await pitfalls",
-      "version": "1.0",
+      "version": "1.0.1",
       "source": {
         "source": "url",
         "url": "git@github.pie.apple.com:rfalk/Swift-Concurrency-Agent-Skills.git",
-        "ref": "1.0.0"
+        "ref": "1.0.1"
       },
       "author": {
         "name": "Paul Hudson"
