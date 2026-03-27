@@ -20,3 +20,10 @@ Load LSP first: `ToolSearch` query `select:LSP`. Then use `goToDefinition`, `fin
 ## Builds
 
 You do NOT run `xcodebuild` or spawn build agents. After making changes, tell the parent agent what you changed and ask it to trigger a build. The parent handles build dispatch and relays results back to you.
+
+## Concurrency Changes
+
+Before removing or refactoring any concurrency code (`withValue`, `Task`, `withTaskCancellationHandler`, `@Sendable` closures):
+1. Trace every role the code serves — TaskLocal binding, Sendable boundary, ownership transfer, cancellation propagation. Concurrency code often serves multiple purposes; removing one function may break an unrelated constraint.
+2. Write a test that validates the concurrency assumption BEFORE making the change.
+3. Build after the change — Sendable violations surface only at compile time.

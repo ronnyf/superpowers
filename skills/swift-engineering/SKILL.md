@@ -14,7 +14,12 @@ Every decision must account for data isolation. This is non-negotiable:
 - **Actors** for shared mutable state. Prefer over classes with locks or queues.
 - **Structured concurrency**: `TaskGroup`, `async let`. Avoid unstructured `Task {}` unless escaping a synchronous context.
 - **@TaskLocal** for dependency injection into task hierarchies.
+  - Propagation rules: structured child tasks (`async let`, `TaskGroup`) inherit via **parent link** (live read). Unstructured `Task {}` inherits via **deep copy** (snapshot at creation). `Task.detached` inherits **nothing**.
+  - **Ordering matters:** when using `withValue` to inject state for a framework API, the API call must happen **inside** `withValue`. Frameworks may create internal tasks at call time that inherit the `@TaskLocal` from the calling context — setting `withValue` only around iteration is insufficient.
+  - Never assert `@TaskLocal` propagation from reasoning alone — write a test.
 - **Sendable**: All types crossing isolation boundaries must conform. Prefer value types (structs, enums).
+  - `some AsyncSequence` is not `Sendable`. To iterate one inside a `Task`, use `withTaskCancellationHandler` — its `operation` closure is not `@Sendable`, providing a legal capture scope for non-Sendable types.
+  - `sending` parameters transfer exclusive ownership across isolation boundaries. Prefer over `@unchecked Sendable`.
 - **NEVER use `nonisolated(unsafe)`** — find alternative designs (actors, protocols with Sendable constraints, restructure ownership).
 - **@MainActor**: Only for UI-bound code. Not a convenience escape hatch.
 - **@concurrent nonisolated**: For methods that can safely run on any executor without isolation.
