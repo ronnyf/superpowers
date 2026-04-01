@@ -33,6 +33,19 @@
         "author": {
           "name": "Paul Hudson"
         }
+      },
+      {
+        "name": "swiftui-pro",
+        "description": "Comprehensively reviews SwiftUI code for best practices on modern APIs, maintainability, and performance",
+        "version": "1.0.0",
+        "source": {
+          "source": "url",
+          "url": "git@github.pie.apple.com:rfalk/swiftui-pro.git",
+          "ref": "1.0.0"
+        },
+        "author": {
+          "name": "Paul Hudson"
+        }
       }
     ]
   }
