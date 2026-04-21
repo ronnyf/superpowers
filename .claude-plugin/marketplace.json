@@ -2,48 +2,18 @@
   "name": "superpowers-dev",
   "description": "Development marketplace for Superpowers core skills library",
   "owner": {
-    "name": "Ronny Falk",
-    "email": "ronnyf@apple.com"
+    "name": "Jesse Vincent",
+    "email": "jesse@fsck.com"
   },
   "plugins": [
     {
       "name": "superpowers",
       "description": "Core skills library for Claude Code: TDD, debugging, collaboration patterns, and proven techniques",
-      "version": "5.0.6.2",
-      "source": {
-        "source": "url",
-        "url": "git@github.pie.apple.com:rfalk/claude-superpowers.git",
-        "ref": "v5.0.6.2"
-      },
+      "version": "5.0.7",
+      "source": "./",
       "author": {
         "name": "Jesse Vincent",
         "email": "jesse@fsck.com"
-      }
-    },
-    {
-      "name": "swift-concurrency-pro",
-      "description": "Reviews Swift code for concurrency correctness, modern API usage, and common async/await pitfalls",
-      "version": "1.0.1",
-      "source": {
-        "source": "url",
-        "url": "git@github.pie.apple.com:rfalk/Swift-Concurrency-Agent-Skills.git",
-        "ref": "1.0.1"
-      },
-      "author": {
-        "name": "Paul Hudson"
-      }
-    },
-    {
-      "name": "swiftui-pro",
-      "description": "Comprehensively reviews SwiftUI code for best practices on modern APIs, maintainability, and performance",
-      "version": "1.0.0",
-      "source": {
-        "source": "url",
-        "url": "git@github.pie.apple.com:rfalk/swiftui-pro.git",
-        "ref": "1.0.0"
-      },
-      "author": {
-        "name": "Paul Hudson"
       }
     }
   ]
