@@ -1,6 +1,6 @@
 ---
 name: swift-engineering
-description: Use when writing, reviewing, or architecting Swift code for Apple platforms
+description: Use when writing, reviewing, planning, or architecting Swift code for Apple platforms — invoke during plan writing for Swift features, concurrency design, and API surface decisions
 ---
 
 # Swift Engineering
