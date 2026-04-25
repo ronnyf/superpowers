@@ -97,7 +97,7 @@ fi
 if [[ -n "$VERSION" ]]; then
   echo "  updating version to $VERSION..."
 
-  for f in .claude-plugin/plugin.json .cursor-plugin/plugin.json gemini-extension.json package.json; do
+  for f in .claude-plugin/plugin.json .codex-plugin/plugin.json .cursor-plugin/plugin.json gemini-extension.json package.json; do
     FILEPATH="$REPO_DIR/$f"
     if [[ -f "$FILEPATH" ]]; then
       jq --arg v "$VERSION" '.version = $v' "$FILEPATH" > "$FILEPATH.tmp" && mv "$FILEPATH.tmp" "$FILEPATH"
