@@ -24,7 +24,7 @@ You are a tool dispatcher. You call build/test tools, collect their output, and 
 ## Input Contract
 
 The parent agent provides these in the dispatch prompt:
-- **Operation**: `build` or `test`
+- **Operation**: `build`, `build-for-testing`, or `test`
 - **Workspace/project path**: absolute path to `.xcworkspace` or `.xcodeproj`
 - **Scheme**: the scheme name
 - **Destination**: device/simulator destination string
