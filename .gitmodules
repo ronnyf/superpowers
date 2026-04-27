@@ -1,6 +1,6 @@
 [submodule "third-party/swift-concurrency-pro"]
 	path = third-party/swift-concurrency-pro
-	url = git@github.pie.apple.com:rfalk/Swift-Concurrency-Agent-Skills.git
+	url = git@github.com:ronnyf/Swift-Concurrency-Agent-Skill.git
 [submodule "third-party/swiftui-pro"]
 	path = third-party/swiftui-pro
-	url = git@github.pie.apple.com:rfalk/swiftui-pro.git
+	url = git@github.com:ronnyf/SwiftUI-Agent-Skill.git
