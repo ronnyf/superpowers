@@ -1,15 +1,15 @@
 {
   "upstream_remote": "origin",
   "upstream_branch": "main",
-  "fork_remote": "internal",
+  "fork_remote": "public",
   "fork_branch": "main",
   "plugin_overrides": {
     "author": {
       "name": "Ronny Falk",
       "email": "ronnyf@apple.com"
     },
-    "homepage": "https://github.pie.apple.com/rfalk/claude-superpowers",
-    "repository": "git@github.pie.apple.com:rfalk/claude-superpowers.git"
+    "homepage": "https://github.com/ronnyf/superpowers",
+    "repository": "git@github.com:ronnyf/superpowers.git"
   },
   "marketplace_overrides": {
     "owner": {
@@ -18,7 +18,7 @@
     },
     "superpowers_source": {
       "source": "url",
-      "url": "git@github.pie.apple.com:rfalk/claude-superpowers.git"
+      "url": "git@github.com:ronnyf/superpowers.git"
     },
     "extra_plugins": [
       {
@@ -27,7 +27,7 @@
         "version": "1.0.1",
         "source": {
           "source": "url",
-          "url": "git@github.pie.apple.com:rfalk/Swift-Concurrency-Agent-Skills.git",
+          "url": "git@github.com:ronnyf/Swift-Concurrency-Agent-Skill.git",
           "ref": "1.0.1"
         },
         "author": {
@@ -40,7 +40,7 @@
         "version": "1.0.0",
         "source": {
           "source": "url",
-          "url": "git@github.pie.apple.com:rfalk/swiftui-pro.git",
+          "url": "git@github.com:ronnyf/SwiftUI-Agent-Skill.git",
           "ref": "1.0.0"
         },
         "author": {

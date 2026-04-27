@@ -12,7 +12,7 @@
       "version": "5.0.7.3",
       "source": {
         "source": "url",
-        "url": "git@github.pie.apple.com:rfalk/claude-superpowers.git",
+        "url": "git@github.com:ronnyf/superpowers.git",
         "ref": "v5.0.7.3"
       },
       "author": {
@@ -26,7 +26,7 @@
       "version": "1.0.1",
       "source": {
         "source": "url",
-        "url": "git@github.pie.apple.com:rfalk/Swift-Concurrency-Agent-Skills.git",
+        "url": "git@github.com:ronnyf/Swift-Concurrency-Agent-Skill.git",
         "ref": "1.0.1"
       },
       "author": {
@@ -39,7 +39,7 @@
       "version": "1.0.0",
       "source": {
         "source": "url",
-        "url": "git@github.pie.apple.com:rfalk/swiftui-pro.git",
+        "url": "git@github.com:ronnyf/SwiftUI-Agent-Skill.git",
         "ref": "1.0.0"
       },
       "author": {

@@ -34,12 +34,12 @@ The repo targets multiple platforms, each with its own manifest:
 
 - **main** — single working branch, tracks upstream and holds our fork additions
 - **Tags** format: `v5.0.X.Y` on main
-- **Remotes:** `internal` = github.pie.apple.com (rfalk/claude-superpowers), `origin` = github.com (obra/superpowers)
+- **Remotes:** `origin` = github.com (obra/superpowers), `public` = github.com (ronnyf/superpowers)
 
 Release steps:
 1. Commit on main
-2. `git push internal main`
-3. `git tag v5.0.X.Y` → `git push internal v5.0.X.Y`
+2. `git push public main`
+3. `git tag v5.0.X.Y` → `git push public v5.0.X.Y`
 
 ## Syncing with Upstream
 
