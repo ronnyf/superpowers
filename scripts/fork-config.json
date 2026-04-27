@@ -6,7 +6,7 @@
   "plugin_overrides": {
     "author": {
       "name": "Ronny Falk",
-      "email": "ronnyf@apple.com"
+      "email": "ronnyf@icloud.com"
     },
     "homepage": "https://github.com/ronnyf/superpowers",
     "repository": "git@github.com:ronnyf/superpowers.git"
@@ -14,7 +14,7 @@
   "marketplace_overrides": {
     "owner": {
       "name": "Ronny Falk",
-      "email": "ronnyf@apple.com"
+      "email": "ronnyf@icloud.com"
     },
     "superpowers_source": {
       "source": "url",
