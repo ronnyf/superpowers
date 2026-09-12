@@ -505,13 +505,39 @@ Write code before test? Delete it. Start over.
 
 ### Address "Spirit vs Letter" Arguments
 
-Add foundational principle early:
+Where an agent is reaching for "I'm following the spirit" while breaking a specific rule, naming that move closes the class:
 
 ```markdown
 **Violating the letter of the rules is violating the spirit of the rules.**
 ```
 
-This cuts off entire class of "I'm following the spirit" rationalizations.
+Two limits on this line, both measured. It only pays when the baseline actually showed spirit-vs-letter reasoning — dropped into a skill whose failure was something else, it reads as threat without content: in a clean-fixture audit of `verification-before-completion`, an agent given only "this file's prompting may be reducing output quality" cut this exact sentence unprompted, reporting that it "says nothing, in a threatening register." And it is a *rhetorical inversion* of the more familiar "following the letter is not following the spirit," so readers who know the usual form parse it as backwards before they parse it as intended. Prefer stating the specific move you're closing over the aphorism.
+
+### Moralized framing inverts its own goal
+
+Distinct from negation, and the more expensive failure. Framing non-compliance as a *character* fact — lying, dishonesty, laziness, "exhaustion is not an excuse" — attributes a motive to the reader and supplies no action. Where the skill's goal is *disclosure*, it actively works against it: an agent told that skipping a verification step makes it a liar is pressured to present the claim as verified rather than to report that it isn't. The moralized version buys compliance theater at the cost of the honest "I didn't check this," which is the thing you actually wanted.
+
+State the consequence instead of the character:
+
+<Bad>
+```markdown
+Skip any step = lying, not verifying.
+| "I'm tired" | Exhaustion ≠ excuse |
+```
+</Bad>
+
+<Good>
+```markdown
+Skipping a step does not make a claim false; it makes it unverified.
+Saying so satisfies this skill.
+```
+</Good>
+
+Three companion failures travel with it, and each pushes toward false confidence or fabricated content:
+
+- **Banning the vocabulary of calibration.** A red flag on "should", "probably", "seems to" bans the words that correctly mark an unverified claim. Combined with a ban on "any wording implying success," the only register left is flat and certain. Ban the hedge used *instead of* an available command, never the hedge itself.
+- **Absolutism with no remaining legal move.** A rule that forbids every option leaves the agent to guess, silently. Wherever a rule can corner the reader — no verification command exists, no tool is reachable — state the exit (report it, label it unverified, say what to look at) as part of the rule rather than trusting the reader to invent one.
+- **Quota-driven output.** "Propose 2-3 approaches" demands alternatives whether or not real ones exist, and the gap gets filled with straw options. This is the mirror of a suppression instruction ("report only genuine problems"), on the same axis: one fabricates findings, the other hides them. Ask for what genuinely differs, and say explicitly that one plainly-right answer is a complete answer.
 
 ### Build Rationalization Table
 
